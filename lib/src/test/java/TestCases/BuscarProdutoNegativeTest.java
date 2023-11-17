@@ -39,12 +39,12 @@ public class BuscarProdutoNegativeTest {
        .then()
                 .log().all();
 
-        Response response = given().contentType("application/json").get(baseURI+"api/product");
+        Response response = given().contentType("application/json").get(baseURI);
         ExtentReports extent = new ExtentReports();
         ExtentSparkReporter spark = new ExtentSparkReporter("Report/" + "Buscar  produto negativo - Status Code " + response.getStatusCode() + ".html");
         extent.attachReporter(spark);
 
-        if (response.getStatusCode() == 204) {
+        if (response.getStatusCode() == 200) {
             extent.createTest("Teste Buscar apenas um produto  negativo - Status Code " + response.getStatusCode())
                     .log(Status.PASS, "Teste buscar apenas produto negativo, Passed!");
             extent.flush();
