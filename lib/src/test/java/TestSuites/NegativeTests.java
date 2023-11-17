@@ -4,11 +4,11 @@ package TestSuites;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 
-import TestCases.BuscarProdutoPorIdNegativeTest;
+import TestCases.BuscarProdutoNegativeTest;
 
 
 @Suite
-@SelectClasses({BuscarProdutoPorIdNegativeTest.class})
+@SelectClasses({BuscarProdutoNegativeTest.class})
 public class NegativeTests {
 
 }

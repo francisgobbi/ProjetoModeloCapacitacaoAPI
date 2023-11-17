@@ -4,11 +4,11 @@ package TestSuites;
 import org.junit.platform.suite.api.SelectClasses;
 import org.junit.platform.suite.api.Suite;
 
-import TestCases.BuscarApenasUmProdutoPorIdTest;
+import TestCases.BuscarProdutoComTokenTest;
 
 
 @Suite
-@SelectClasses({BuscarApenasUmProdutoPorIdTest.class})
+@SelectClasses({BuscarProdutoComTokenTest.class})
 public class PositiveTests {
 
 }
