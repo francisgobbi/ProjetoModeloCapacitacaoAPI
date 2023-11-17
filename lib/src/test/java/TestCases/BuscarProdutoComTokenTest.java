@@ -10,22 +10,22 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 
-public class BuscarProdutoComAutenticacaoTest {
+public class BuscarProdutoComTokenTest {
 
     @Test
-    @DisplayName("Buscar Produto com Autenticação")
+    @DisplayName("Buscar Produto com token")
     public void testDadoUsuarioQuandoObtenhoTokenEBuscoPorumProdutoEntaoObtenhoStatusCode200(){
-        baseURI = ("https://dummyjson.com");
+        baseURI = ("https://open-souce.azurewebsites.net/");
         basePath = "";
 
         String token = given()
                 .contentType(ContentType.JSON)
                 .body("{\n" +
-                        "  \"username\": \"kminchelle\",\n" +
-                        "  \"password\": \"0lelplR\"\n" +
+                        "  \"email\": \"fernanda@gmail.com\",\n" +
+                        "  \"password\": \"123456\"\n" +
                         "}")
         .when()
-                .post("/auth/login")
+                .post("api/auth")
 
         .then()
                 .log().all().toString();
@@ -34,23 +34,23 @@ public class BuscarProdutoComAutenticacaoTest {
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
         .when()
-                .get("/auth/products")
+                .get("api/product")
 
         .then()
-                .log();
+                .log().all();
 
         Response response = given().contentType("application/json").get(baseURI);
         ExtentReports extent = new ExtentReports();
-        ExtentSparkReporter spark = new ExtentSparkReporter("Report/" + "Buscar produto com autenticação - Status Code " + response.getStatusCode() + ".html");
+        ExtentSparkReporter spark = new ExtentSparkReporter("Report/" + "Buscar produto com token - Status Code " + response.getStatusCode() + ".html");
         extent.attachReporter(spark);
 
         if (response.getStatusCode() == 200) {
-            extent.createTest("Teste buscar produto com autenticação - Status Code " + response.getStatusCode())
-                    .log(Status.PASS, "Teste buscar produto com autenticação, Passed!");
+            extent.createTest("Teste buscar produto com token - Status Code " + response.getStatusCode())
+                    .log(Status.PASS, "Teste buscar produto com token, Passed!");
             extent.flush();
         } else {
-            extent.createTest("Teste buscar apenas um produto por id - Status Code " + response.getStatusCode())
-                    .log(Status.FAIL, "Teste buscar apenas um produto por id, Fail!");
+            extent.createTest("Teste buscar produto com token- Status Code " + response.getStatusCode())
+                    .log(Status.FAIL, "Teste buscar produto com token, Fail!");
             extent.flush();
         }
     }
