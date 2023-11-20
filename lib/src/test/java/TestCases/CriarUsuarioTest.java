@@ -22,11 +22,11 @@ public class CriarUsuarioTest {
         given()
                 .contentType(ContentType.JSON)
                 .body("{\r\n"
-                		+ "  \"email\": \"fernando@gmail.com\",\r\n"
+                		+ "  \"email\": \"fernande@gmail.com\",\r\n"
                 		+ "  \"password\": \"123456\",\r\n"
-                		+ "  \"firstName\": \"Feranando\",\r\n"
+                		+ "  \"firstName\": \"Feranande\",\r\n"
                 		+ "  \"lastName\": \"Silva\",\r\n"
-                		+ "  \"userName\": \"fernandosilva\"\r\n"
+                		+ "  \"userName\": \"fernandesilva\"\r\n"
                 		+ "}")
         .when()
                 .post("api/user-create")

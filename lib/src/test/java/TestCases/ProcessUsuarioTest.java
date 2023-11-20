@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 
-public class BuscarProdutoComTokenTest {
+public class ProcessUsuarioTest {
 
     @Test
-    @DisplayName("Buscar Produto com token")
+    @DisplayName("Status process usuario")
     public void testDadoUsuarioQuandoObtenhoTokenEBuscoPorumProdutoEntaoObtenhoStatusCode200(){
         baseURI = ("https://open-souce.azurewebsites.net/");
         basePath = "";
@@ -33,25 +33,43 @@ public class BuscarProdutoComTokenTest {
         given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
-                .body(token)
+                .body("{\r\n"
+                		+ "  \"products\": [\r\n"
+                		+ "    {\r\n"
+                		+ "      \"id\": \"\",\r\n"
+                		+ "      \"quantity\": -100000000\r\n"
+                		+ "    }\r\n"
+                		+ "  ],\r\n"
+                		+ "  \"shipping\": {\r\n"
+                		+ "    \"address\": \"\",\r\n"
+                		+ "    \"city\": \"\",\r\n"
+                		+ "    \"state\": \"\"\r\n"
+                		+ "  },\r\n"
+                		+ "  \"payment\": {\r\n"
+                		+ "    \"method\": \"\",\r\n"
+                		+ "    \"transactionId\": \"\"\r\n"
+                		+ "  },\r\n"
+                		+ "  \"createdAt\": \"2023-08-24T19:51:55.71Z\",\r\n"
+                		+ "  \"userId\": \"\"\r\n"
+                		+ "}")
         .when()
-                .get("api/product")
+                .post("api/order/process")
 
         .then()
                 .log().all();
 
         Response response = given().contentType("application/json").get(baseURI);
         ExtentReports extent = new ExtentReports();
-        ExtentSparkReporter spark = new ExtentSparkReporter("Report/" + "Buscar produto com token - Status Code " + response.getStatusCode() + ".html");
+        ExtentSparkReporter spark = new ExtentSparkReporter("Report/" + "Buscar order process - Status Code " + response.getStatusCode() + ".html");
         extent.attachReporter(spark);
 
         if (response.getStatusCode() == 200) {
-            extent.createTest("Teste buscar produto com token - Status Code " + response.getStatusCode())
-                    .log(Status.PASS, "Teste buscar produto com token, Passed!");
+            extent.createTest("Teste buscar order process - Status Code " + response.getStatusCode())
+                    .log(Status.PASS, "Teste buscar order process, Passed!");
             extent.flush();
         } else {
-            extent.createTest("Teste buscar produto com token- Status Code " + response.getStatusCode())
-                    .log(Status.FAIL, "Teste buscar produto com token, Fail!");
+            extent.createTest("Teste buscar order process - Status Code " + response.getStatusCode())
+                    .log(Status.FAIL, "Teste buscar order process, Fail!");
             extent.flush();
         }
     }

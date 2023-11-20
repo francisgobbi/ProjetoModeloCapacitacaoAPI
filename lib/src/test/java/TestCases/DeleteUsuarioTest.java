@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 
-public class BuscarProdutoComTokenTest {
+public class DeleteUsuarioTest {
 
     @Test
-    @DisplayName("Buscar Produto com token")
+    @DisplayName("Status delete item por id")
     public void testDadoUsuarioQuandoObtenhoTokenEBuscoPorumProdutoEntaoObtenhoStatusCode200(){
         baseURI = ("https://open-souce.azurewebsites.net/");
         basePath = "";
@@ -33,25 +33,25 @@ public class BuscarProdutoComTokenTest {
         given()
                 .contentType(ContentType.JSON)
                 .header("Authorization", token)
-                .body(token)
+               
         .when()
-                .get("api/product")
+                .delete("api/cart/null")
 
         .then()
                 .log().all();
 
-        Response response = given().contentType("application/json").get(baseURI);
+        Response response = given().contentType("application/json").get("https://open-souce.azurewebsites.net/api/cart/null");
         ExtentReports extent = new ExtentReports();
-        ExtentSparkReporter spark = new ExtentSparkReporter("Report/" + "Buscar produto com token - Status Code " + response.getStatusCode() + ".html");
+        ExtentSparkReporter spark = new ExtentSparkReporter("Report/" + "Buscar delete item por id - Status Code " + response.getStatusCode() + ".html");
         extent.attachReporter(spark);
 
-        if (response.getStatusCode() == 200) {
-            extent.createTest("Teste buscar produto com token - Status Code " + response.getStatusCode())
-                    .log(Status.PASS, "Teste buscar produto com token, Passed!");
+        if (response.getStatusCode() == 404) {
+            extent.createTest("Teste delete item por id - Status Code " + response.getStatusCode())
+                    .log(Status.PASS, "Teste delete item por id, Passed!");
             extent.flush();
         } else {
-            extent.createTest("Teste buscar produto com token- Status Code " + response.getStatusCode())
-                    .log(Status.FAIL, "Teste buscar produto com token, Fail!");
+            extent.createTest("Teste delete item por id - Status Code " + response.getStatusCode())
+                    .log(Status.FAIL, "Teste delete item por id, Fail!");
             extent.flush();
         }
     }
