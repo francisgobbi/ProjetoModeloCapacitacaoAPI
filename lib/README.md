@@ -22,9 +22,11 @@ Os sub tópicos abaixo descrevem algumas decisões tomadas na estruturação do proj
 - JUnit4 - testImplementation 'junit:junit:4.13'
 - api 'org.apache.commons:commons-math3:3.6.1'
 - implementation 'com.google.guava:guava:29.0-jre' 
-- implementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
-- implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
-- testImplementation 'org.junit.platform:junit-platform-suite-api:1.10.0'
+// https://mvnrepository.com/artifact/org.junit.platform/junit-platform-engine
+- implementation 'org.junit.platform:junit-platform-suite-engine:1.9.0-M1'
+// https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+- implementation 'io.rest-assured:rest-assured:5.3.2'
+- implementation 'org.junit.platform:junit-platform-suite-api:1.10.0'
 
 ## Testes Automatizados
 Testes automatizados para API, criar, alterar usuario, criar alterar produtos na API https://souceapi.docs.apiary.io/#reference/product/apiproduct/put?console=1, acessar a API e realizar operações. 
