@@ -34,7 +34,7 @@ Testes automatizados para API, criar, alterar usuario, criar alterar produtos na
 - Para clonar o projeto modelo Capacitação Web em Gradle no seu computador e executar, realize estes passos abaixo :
 
 - - Open Git Bash here
-- - Digitar: git clone git@github.com:francisgobbi/ProjetoModeloAutomacaoWeb.git
+- - Digitar: git clone https://github.com/francisgobbi/ProjetoModeloCapacitacaoAPI.git
 - - Projeto sera clonado no seu computador.
 
 - Para executar o projeto, realize estes passo :
