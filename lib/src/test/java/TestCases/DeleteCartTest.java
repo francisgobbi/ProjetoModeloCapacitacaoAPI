@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.*;
 
-public class DeleteUsuarioTest {
+public class DeleteCartTest {
 
     @Test
-    @DisplayName("Status delete item por id")
+    @DisplayName("Status delete cart")
     public void testDadoUsuarioQuandoObtenhoTokenEBuscoPorumProdutoEntaoObtenhoStatusCode200(){
         baseURI = ("https://open-souce.azurewebsites.net/");
         basePath = "";
