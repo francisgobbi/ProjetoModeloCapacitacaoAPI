@@ -52,9 +52,9 @@ public class CriarProdutoTest {
                 .contentType(ContentType.JSON)
                 .header("authentication",token)
                 .body("{\r\n"
-                		+ "  \"sku\": \"sku\",\r\n"
-                		+ "  \"title\": \"title\",\r\n"
-                		+ "  \"description\": \"description\",\r\n"
+                		+ "  \"sku\": \"sku2\",\r\n"
+                		+ "  \"title\": \"title2\",\r\n"
+                		+ "  \"description\": \"description2\",\r\n"
                 		+ "  \"price\": 5,\r\n"
                 		+ "  \"quantity\": 10\r\n"
                 		+ "}")

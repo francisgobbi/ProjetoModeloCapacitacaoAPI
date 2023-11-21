@@ -35,7 +35,7 @@ public class DeleteCartTest {
                 .header("Authorization", token)
                
         .when()
-                .delete("api/cart/null")
+                .delete("api/cart/655cf4d109855400420a2bee")
 
         .then()
                 .log().all();
